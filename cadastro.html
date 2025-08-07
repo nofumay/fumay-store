@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fumay Store - Cadastro de Produto</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f0ff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #6a1b9a;
+    }
+
+    input {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 300px;
+      margin: 8px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #673ab7;
+    }
+
+    #msg {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #4a148c;
+    }
+
+    @media (max-width: 500px) {
+      input {
+        width: 90%;
+      }
+
+      button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Produto - Fumay Store</h1>
+  <input type="text" id="senha" placeholder="Senha para o cliente"><br>
+  <input type="text" id="produto" placeholder="Descrição ou link do produto"><br>
+  <button onclick="cadastrar()">Cadastrar Produto</button>
+
+  <p id="msg"></p>
+
+  <script>
+    function cadastrar() {
+      const senha = document.getElementById("senha").value.trim();
+      const produto = document.getElementById("produto").value.trim();
+
+      if (!senha || !produto) {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      localStorage.setItem(senha, produto);
+      document.getElementById("msg").innerText = "✅ Produto cadastrado com sucesso!";
+      document.getElementById("senha").value = "";
+      document.getElementById("produto").value = "";
+    }
+  </script>
+</body>
+</html>
